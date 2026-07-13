@@ -15,6 +15,7 @@ import {
 } from '@/lib/volume';
 import { useRoutineStore } from '@/store/useRoutineStore';
 import { SourceFootnote } from './SourceFootnote';
+import { TierVolumeBar } from './TierVolumeBar';
 import { VolumeBar } from './VolumeBar';
 
 const BAR_MAX = 20;
@@ -23,7 +24,7 @@ const SECONDARY_COLOR = '#6B6B64';
 function MetricCard({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-lg border border-border bg-surface-raised p-3 text-center">
-      <p className="text-lg font-semibold text-text">{value}</p>
+      <p className="font-headline text-lg font-bold text-text">{value}</p>
       <p className="mt-0.5 text-xs text-text-muted">{label}</p>
     </div>
   );
@@ -59,7 +60,7 @@ export function Dashboard() {
             type="button"
             onClick={closeDashboard}
             aria-label="닫기"
-            className="text-text-muted hover:text-text"
+            className="flex h-11 w-11 items-center justify-center text-text-muted hover:text-text"
           >
             ✕
           </button>
@@ -74,15 +75,12 @@ export function Dashboard() {
         <div className="space-y-4">
           {PRIMARY_MUSCLES.map((muscle) => {
             const value = volume[muscle];
-            const tier = weeklyTier(value);
             const freq = frequency(routine, muscle, EXERCISES);
             return (
-              <VolumeBar
+              <TierVolumeBar
                 key={muscle}
                 label={muscle}
                 value={value}
-                max={BAR_MAX}
-                color={TIER_STYLE[tier].color}
                 freqLabel={`주 ${freq}회`}
                 onClick={() => setSelectedMuscle(muscle)}
               />

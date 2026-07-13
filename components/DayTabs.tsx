@@ -28,7 +28,7 @@ export function DayTabs() {
         onClick={addDay}
         disabled={days.length >= 6}
         aria-label="Day 추가"
-        className="shrink-0 w-8 h-8 rounded-full border border-border text-text-muted disabled:opacity-30 hover:border-gold hover:text-gold transition-colors"
+        className="shrink-0 w-11 h-11 rounded-full border border-border text-text-muted disabled:opacity-30 hover:border-gold hover:text-gold transition-colors"
       >
         +
       </button>
@@ -37,7 +37,7 @@ export function DayTabs() {
           type="button"
           onClick={() => removeDay(activeDayId)}
           aria-label="현재 Day 삭제"
-          className="shrink-0 w-8 h-8 rounded-full border border-border text-text-muted hover:border-gold hover:text-gold transition-colors"
+          className="shrink-0 w-11 h-11 rounded-full border border-border text-text-muted hover:border-gold hover:text-gold transition-colors"
         >
           −
         </button>

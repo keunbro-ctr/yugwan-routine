@@ -6,7 +6,10 @@ export default function HomePage() {
     <main className="flex-1 flex flex-col items-center px-6 py-16 sm:py-24">
       <div className="w-full max-w-2xl">
         <p className="text-gold text-sm font-medium tracking-wide mb-2">유관 · 8편</p>
-        <h1 className="text-3xl sm:text-4xl font-bold text-text mb-3">유관 루틴 설계기</h1>
+        <h1 className="font-headline text-3xl sm:text-4xl font-bold text-text mb-2">
+          내 루틴, 내가 짠다
+        </h1>
+        <p className="text-text-muted mb-1">주 3·4·5일 홈짐 루틴 설계기</p>
         <p className="text-text-muted mb-10 leading-relaxed">
           프리셋을 불러와 운동을 추가·삭제·조절하고, 주간·세션 볼륨을 실시간으로 확인하세요.
         </p>

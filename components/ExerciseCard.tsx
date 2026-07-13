@@ -39,12 +39,12 @@ export function ExerciseCard({ dayId, index }: ExerciseCardProps) {
               type="button"
               aria-label="메뉴"
               onClick={() => setMenuOpen((v) => !v)}
-              className="flex h-8 w-8 items-center justify-center rounded-full text-text-muted hover:text-text"
+              className="flex h-11 w-11 items-center justify-center rounded-full text-text-muted hover:text-text"
             >
               ⋮
             </button>
             {menuOpen && (
-              <div className="absolute right-0 top-9 z-10 w-40 rounded-lg border border-border bg-surface-raised py-1 shadow-lg">
+              <div className="absolute right-0 top-11 z-10 w-40 rounded-lg border border-border bg-surface-raised py-1">
                 <button
                   type="button"
                   onClick={() => {

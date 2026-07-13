@@ -12,7 +12,7 @@ export function SessionHeader() {
 
   return (
     <div className="px-4 pt-4">
-      <h2 className="text-lg font-semibold text-text">
+      <h2 className="font-headline text-lg font-bold text-text">
         {day.label} · {totalSets}세트 · 약 {minutes}분
       </h2>
     </div>

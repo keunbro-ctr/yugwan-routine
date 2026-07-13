@@ -36,7 +36,7 @@ export function AddExerciseSheet({ dayId, open, onClose }: AddExerciseSheetProps
             type="button"
             onClick={onClose}
             aria-label="닫기"
-            className="text-text-muted hover:text-text"
+            className="flex h-11 w-11 items-center justify-center text-text-muted hover:text-text"
           >
             ✕
           </button>
