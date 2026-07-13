@@ -25,26 +25,30 @@ export function ExerciseCard({ dayId, index }: ExerciseCardProps) {
   const exercise = EXERCISES.find((e) => e.id === routineExercise.exerciseId);
   if (!exercise) return null;
 
+  const muscleBadge = Object.keys(exercise.coefficients).join(' · ');
+
   return (
-    <div className="rounded-xl border border-border bg-surface p-4">
-      <div className="flex items-start justify-between gap-3">
+    <div className="rounded-xl border border-border bg-surface p-3">
+      <div className="flex items-center justify-between gap-3">
         <div className="min-w-0">
-          <p className="text-text font-medium">{exercise.name}</p>
-          <p className="mt-0.5 text-xs text-text-muted">{exercise.note}</p>
+          <p className="truncate text-text font-medium" title={exercise.note}>
+            {exercise.name}
+          </p>
+          <p className="mt-0.5 line-clamp-1 text-xs text-gold">{muscleBadge}</p>
         </div>
-        <div className="flex shrink-0 items-center gap-2">
+        <div className="flex shrink-0 items-center gap-1">
           <SetStepper value={routineExercise.sets} onChange={(v) => setSets(dayId, index, v)} />
           <div className="relative">
             <button
               type="button"
               aria-label="메뉴"
               onClick={() => setMenuOpen((v) => !v)}
-              className="flex h-11 w-11 items-center justify-center rounded-full text-text-muted hover:text-text"
+              className="flex h-8 w-8 items-center justify-center rounded-full text-text-muted hover:text-text"
             >
               ⋮
             </button>
             {menuOpen && (
-              <div className="absolute right-0 top-11 z-10 w-40 rounded-lg border border-border bg-surface-raised py-1">
+              <div className="absolute right-0 top-9 z-10 w-40 rounded-lg border border-border bg-surface-raised py-1">
                 <button
                   type="button"
                   onClick={() => {

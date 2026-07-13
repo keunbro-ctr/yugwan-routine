@@ -72,6 +72,9 @@ export function Dashboard() {
           <MetricCard label="주당 예상 시간" value={`${weeklyMinutes}분`} />
         </div>
 
+        <p className="mb-3 text-xs font-medium uppercase tracking-wide text-text-muted">
+          부위별 주간 누적 세트
+        </p>
         <div className="space-y-4">
           {PRIMARY_MUSCLES.map((muscle) => {
             const value = volume[muscle];

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { PRESETS } from '@/lib/presets';
+import { avgSetsPerSession, estimatedMinutes } from '@/lib/volume';
 
 export default function HomePage() {
   return (
@@ -15,20 +16,24 @@ export default function HomePage() {
         </p>
 
         <div className="grid gap-4 sm:grid-cols-2">
-          {PRESETS.map((preset) => (
-            <Link
-              key={preset.id}
-              href={`/edit?preset=${preset.id}`}
-              className="group rounded-xl border border-border bg-surface p-5 transition-colors hover:border-gold"
-            >
-              <p className="text-text font-semibold mb-1 group-hover:text-gold transition-colors">
-                {preset.name}
-              </p>
-              <p className="text-text-muted text-sm">
-                {preset.days.map((day) => day.label).join(' · ')}
-              </p>
-            </Link>
-          ))}
+          {PRESETS.map((preset) => {
+            const avgMinutes = estimatedMinutes(avgSetsPerSession(preset), preset.minutesPerSet);
+            return (
+              <Link
+                key={preset.id}
+                href={`/edit?preset=${preset.id}`}
+                className="group rounded-xl border border-border bg-surface p-5 transition-colors hover:border-gold"
+              >
+                <p className="text-text font-semibold mb-1 group-hover:text-gold transition-colors">
+                  {preset.name}
+                </p>
+                <p className="text-gold text-sm mb-1">회당 평균 {avgMinutes}분</p>
+                <p className="text-text-muted text-xs">
+                  {preset.days.map((day) => day.label).join(' · ')}
+                </p>
+              </Link>
+            );
+          })}
         </div>
 
         <Link

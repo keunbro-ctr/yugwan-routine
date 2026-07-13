@@ -23,21 +23,20 @@ const TIER_ORDER: WeeklyTier[] = [
 ];
 const TIER_BOUNDARIES = [0, 3, 4, 5, 11, 19, 30, 43];
 
-// 0부터 value까지 지나온 모든 티어의 색을 순서대로 이어붙인 hard-stop 그라데이션을 만든다.
-// (골드가 옅어지는 과정을 막대 하나에 "히스토리"로 보여주기 위함 — 단일 티어색만 칠하지 않는다.)
-function buildHistoryGradient(value: number): string {
-  const stops: string[] = [];
-  for (let i = 0; i < TIER_ORDER.length; i++) {
-    const segStart = TIER_BOUNDARIES[i];
-    if (segStart >= value) break;
-    const segEnd = TIER_BOUNDARIES[i + 1] ?? value;
-    const segEndClamped = Math.min(segEnd, value);
+// 0부터 value까지, 지나온 티어 색을 이어붙인 연속 그라데이션을 만든다.
+// 5~10세트(높은 효율) 근처에서 색이 가장 진하게 정점을 찍고, 그 이후로는
+// 세트가 늘어날수록 시그니처 골드의 농도가 점차 옅어지는 흐름으로 이어진다.
+function buildFadeGradient(value: number): string {
+  const stops: string[] = [`${TIER_STYLE.below_maintenance.color} 0%`];
+  for (let i = 1; i < TIER_ORDER.length; i++) {
+    const boundary = TIER_BOUNDARIES[i];
+    if (boundary > value) break;
     const color = TIER_STYLE[TIER_ORDER[i]].color;
     const solidColor = color === 'HATCH' ? '#4A4A46' : color;
-    const startPct = (segStart / value) * 100;
-    const endPct = (segEndClamped / value) * 100;
-    stops.push(`${solidColor} ${startPct}%`, `${solidColor} ${endPct}%`);
+    stops.push(`${solidColor} ${(boundary / value) * 100}%`);
   }
+  const currentColor = TIER_STYLE[weeklyTier(value)].color;
+  stops.push(`${currentColor === 'HATCH' ? '#4A4A46' : currentColor} 100%`);
   return `linear-gradient(to right, ${stops.join(', ')})`;
 }
 
@@ -56,7 +55,7 @@ export function TierVolumeBar({ label, value, freqLabel, onClick }: TierVolumeBa
   const fillStyle: CSSProperties =
     tier === 'unstudied'
       ? { width: `${fillPct}%`, backgroundColor: '#3A3A38', backgroundImage: HATCH_PATTERN }
-      : { width: `${fillPct}%`, backgroundImage: value > 0 ? buildHistoryGradient(value) : undefined };
+      : { width: `${fillPct}%`, backgroundImage: value > 0 ? buildFadeGradient(value) : undefined };
 
   return (
     <button
@@ -68,8 +67,8 @@ export function TierVolumeBar({ label, value, freqLabel, onClick }: TierVolumeBa
       <div className="mb-1 flex items-baseline justify-between text-sm">
         <span className="text-text">{label}</span>
         <span className="flex items-center gap-2">
-          {freqLabel && <span className="text-xs text-text-muted">{freqLabel}</span>}
-          <span className="font-headline tabular-nums font-medium text-text">{value}</span>
+          {freqLabel && <span className="text-xs font-medium text-text">{freqLabel}</span>}
+          <span className="font-headline tabular-nums font-medium text-text">{value}세트</span>
         </span>
       </div>
       <div className="relative h-2 overflow-hidden rounded-full bg-surface-raised">
