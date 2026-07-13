@@ -1,65 +1,48 @@
-import Image from "next/image";
+import Link from 'next/link';
+import { PRESETS } from '@/lib/presets';
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <main className="flex-1 flex flex-col items-center px-6 py-16 sm:py-24">
+      <div className="w-full max-w-2xl">
+        <p className="text-gold text-sm font-medium tracking-wide mb-2">유관 · 8편</p>
+        <h1 className="text-3xl sm:text-4xl font-bold text-text mb-3">유관 루틴 설계기</h1>
+        <p className="text-text-muted mb-10 leading-relaxed">
+          프리셋을 불러와 운동을 추가·삭제·조절하고, 주간·세션 볼륨을 실시간으로 확인하세요.
+        </p>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          {PRESETS.map((preset) => (
+            <Link
+              key={preset.id}
+              href={`/edit?preset=${preset.id}`}
+              className="group rounded-xl border border-border bg-surface p-5 transition-colors hover:border-gold"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              <p className="text-text font-semibold mb-1 group-hover:text-gold transition-colors">
+                {preset.name}
+              </p>
+              <p className="text-text-muted text-sm">
+                {preset.days.map((day) => day.label).join(' · ')}
+              </p>
+            </Link>
+          ))}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+
+        <Link
+          href="/edit?preset=empty"
+          className="mt-4 block rounded-xl border border-dashed border-border p-5 text-center text-text-muted transition-colors hover:border-gold hover:text-gold"
+        >
+          빈 루틴으로 직접 설계
+        </Link>
+
+        <p className="mt-12 text-sm text-text-muted">
+          이 앱의 배경이 궁금하다면{' '}
+          <a href="#" className="text-gold underline underline-offset-2">
+            유관 8편 영상
           </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+          을 참고하세요.
+        </p>
+      </div>
+    </main>
   );
 }
