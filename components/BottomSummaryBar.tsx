@@ -16,11 +16,15 @@ export function BottomSummaryBar() {
     <button
       type="button"
       onClick={openDashboard}
-      className="fixed inset-x-0 bottom-0 z-10 border-t border-border bg-surface px-4 py-3 text-left"
+      className="fixed inset-x-0 bottom-0 z-10 border-t-2 border-gold bg-surface px-4 py-3 text-left"
     >
       <div className="mx-auto flex w-full max-w-lg items-center justify-between">
-        <span className="text-sm text-text-muted">주간 총 세트</span>
-        <span className="font-semibold text-text">{totalSets}세트</span>
+        <span className="flex items-center gap-1 text-sm font-medium text-gold">
+          <span aria-hidden="true">▲</span> 대시보드 보기
+        </span>
+        <span className="text-sm text-text-muted">
+          주간 총 <span className="font-semibold text-text">{totalSets}세트</span>
+        </span>
       </div>
       <div className="mx-auto mt-2 flex h-2 w-full max-w-lg gap-1">
         {PRIMARY_MUSCLES.map((muscle) => {
