@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <main className="flex-1 flex flex-col items-center px-6 py-16 sm:py-24">
       <div className="w-full max-w-2xl">
-        <p className="text-gold text-sm font-medium tracking-wide mb-2">유관 · 8편</p>
+        <p className="text-text-muted text-sm font-medium tracking-wide mb-2">유관 · 8편</p>
         <h1 className="font-headline text-3xl sm:text-4xl font-bold text-text mb-2">
           <span className="text-gold">내</span> <span className="text-gold">루</span>틴,{' '}
           <span className="text-gold">내</span>가 <span className="text-gold">짠</span>다
