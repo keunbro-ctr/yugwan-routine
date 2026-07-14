@@ -51,11 +51,11 @@ export function EditorShell({ initialPresetId }: EditorShellProps) {
   const activeDay = routine.days.find((day) => day.id === activeDayId) ?? routine.days[0];
 
   return (
-    <div className="flex flex-1 flex-col">
+    <div className="flex min-h-0 flex-1 flex-col">
       <DayTabs />
       <SessionHeader />
       <SessionMuscleStrip />
-      <div className="flex-1 overflow-y-auto px-4 pb-28 pt-2">
+      <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-4 pt-2">
         <div className="space-y-3">
           {activeDay.exercises.map((_, index) => (
             <ExerciseCard key={index} dayId={activeDay.id} index={index} />

@@ -12,7 +12,7 @@ export default async function EditPage({ searchParams }: EditPageProps) {
   const presetId = isValidPreset ? params.preset : undefined;
 
   return (
-    <div className="flex flex-1 flex-col">
+    <div className="flex min-h-0 flex-1 flex-col">
       <EditorShell initialPresetId={presetId} />
     </div>
   );

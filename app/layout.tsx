@@ -41,7 +41,7 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-bg text-text">
+      <body className="h-full flex flex-col bg-bg text-text">
         <AppHeader />
         {children}
       </body>
