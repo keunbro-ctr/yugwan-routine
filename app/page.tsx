@@ -28,10 +28,17 @@ export default function HomePage() {
                 <p className="text-text font-semibold mb-1 group-hover:text-gold transition-colors">
                   {preset.name}
                 </p>
-                <p className="text-gold text-sm mb-1">회당 평균 {avgMinutes}분</p>
-                <p className="text-text-muted text-xs">
-                  {preset.days.map((day) => day.label).join(' · ')}
-                </p>
+                <p className="text-gold text-sm mb-2">회당 평균 {avgMinutes}분</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {preset.days.map((day) => (
+                    <span
+                      key={day.id}
+                      className="rounded-full bg-surface-raised px-2 py-0.5 text-xs text-text-muted"
+                    >
+                      {day.label}
+                    </span>
+                  ))}
+                </div>
               </Link>
             );
           })}
