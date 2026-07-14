@@ -21,7 +21,7 @@ export function AppHeader() {
           <span className="h-0.5 w-5 bg-text" />
         </button>
         <Link href="/" className="font-headline text-base font-bold text-text">
-          유관 루틴 설계기
+          유관 홈짐 루틴 빌더
         </Link>
       </header>
       <NavDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />

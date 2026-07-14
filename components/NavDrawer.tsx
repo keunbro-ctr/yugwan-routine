@@ -41,7 +41,7 @@ export function NavDrawer({ open, onClose }: NavDrawerProps) {
               className={`h-1.5 w-1.5 rounded-full ${isRoutineActive ? 'bg-gold' : 'bg-transparent'}`}
               aria-hidden="true"
             />
-            루틴 설계기
+            홈짐 루틴 빌더
           </Link>
           {COMING_SOON_ITEMS.map((label) => (
             <span

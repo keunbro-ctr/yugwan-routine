@@ -8,9 +8,10 @@ export default function HomePage() {
       <div className="w-full max-w-2xl">
         <p className="text-gold text-sm font-medium tracking-wide mb-2">유관 · 8편</p>
         <h1 className="font-headline text-3xl sm:text-4xl font-bold text-text mb-2">
-          내 루틴, 내가 짠다
+          <span className="text-gold">내</span> <span className="text-gold">루</span>틴,{' '}
+          <span className="text-gold">내</span>가 <span className="text-gold">짠</span>다
         </h1>
-        <p className="text-text-muted mb-1">주 3·4·5일 홈짐 루틴 설계기</p>
+        <p className="text-text-muted mb-1">주 3·4·5일 홈짐 루틴 빌더</p>
         <p className="text-text-muted mb-10 leading-relaxed">
           프리셋을 불러와 운동을 추가·삭제·조절하고, 주간·세션 볼륨을 실시간으로 확인하세요.
         </p>
