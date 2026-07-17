@@ -21,6 +21,7 @@ import { AddExerciseSheet } from './AddExerciseSheet';
 import { BottomSummaryBar } from './BottomSummaryBar';
 import { Dashboard } from './Dashboard';
 import { DayTabs } from './DayTabs';
+import { EditorToolbar } from './EditorToolbar';
 import { ExerciseCard } from './ExerciseCard';
 import { PrintableRoutine } from './PrintableRoutine';
 import { SessionHeader } from './SessionHeader';
@@ -86,6 +87,7 @@ export function EditorShell({ initialPresetId }: EditorShellProps) {
       <div className="flex min-h-0 flex-1 flex-col print:hidden">
         <DayTabs />
         <SessionHeader />
+        <EditorToolbar />
         <SessionMuscleStrip />
         <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-4 pt-2">
           <DndContext
