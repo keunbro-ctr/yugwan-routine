@@ -1,5 +1,7 @@
 'use client';
 
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 import { useState } from 'react';
 import { EXERCISES } from '@/lib/exercises';
 import { useRoutineStore } from '@/store/useRoutineStore';
@@ -21,6 +23,13 @@ export function ExerciseCard({ dayId, index }: ExerciseCardProps) {
   const setSets = useRoutineStore((s) => s.setSets);
   const removeExercise = useRoutineStore((s) => s.removeExercise);
 
+  // uid는 store 진입점(addExercise/loadPreset/loadEmpty/마이그레이션)에서 항상 채워지지만,
+  // 방어적으로 dayId+index 조합을 폴백으로 둔다.
+  const sortableId = routineExercise?.uid ?? `${dayId}-${index}`;
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
+    id: sortableId,
+  });
+
   if (!routineExercise) return null;
   const exercise = EXERCISES.find((e) => e.id === routineExercise.exerciseId);
   if (!exercise) return null;
@@ -28,9 +37,27 @@ export function ExerciseCard({ dayId, index }: ExerciseCardProps) {
   const muscleBadge = Object.keys(exercise.coefficients).join(' · ');
 
   return (
-    <div className="rounded-xl border border-border bg-surface p-3">
-      <div className="flex items-center justify-between gap-3">
-        <div className="min-w-0">
+    <div
+      ref={setNodeRef}
+      style={{
+        transform: CSS.Transform.toString(transform),
+        transition,
+        opacity: isDragging ? 0.5 : 1,
+      }}
+      className="rounded-xl border border-border bg-surface p-3"
+    >
+      <div className="flex items-center gap-2">
+        <button
+          type="button"
+          aria-label="드래그해서 순서 변경"
+          className="flex h-11 w-6 shrink-0 cursor-grab items-center justify-center text-text-dim active:cursor-grabbing"
+          style={{ touchAction: 'none' }}
+          {...attributes}
+          {...listeners}
+        >
+          ⠿
+        </button>
+        <div className="min-w-0 flex-1">
           <p className="truncate text-text font-medium" title={exercise.note}>
             {exercise.name}
           </p>

@@ -30,6 +30,10 @@ export interface RoutineExercise {
   exerciseId: string;
   sets: number;
   coefficientOverride?: Partial<Record<MuscleKey, number>>;
+  // 드래그 순서 변경 시 아이템 정체성을 유지하기 위한 안정적인 id.
+  // 정적 프리셋 데이터(lib/presets.ts)와 테스트 픽스처엔 없고, 스토어를 거치는
+  // 런타임 인스턴스(addExercise/loadPreset/loadEmpty, 그리고 구버전 데이터 마이그레이션)에서 채워진다.
+  uid?: string;
 }
 
 export interface Day {

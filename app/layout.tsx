@@ -21,8 +21,8 @@ const paperlogy = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "유관 홈짐 루틴 빌더",
-  description: "유튜브 채널 유관 8편(홈짐 루틴 설계) 시청자용 홈짐 루틴 빌더",
+  title: "유관 1평 홈짐 루틴 빌더",
+  description: "유튜브 채널 유관 8편(1평 홈짐 루틴 설계) 시청자용 1평 홈짐 루틴 빌더",
 };
 
 export default function RootLayout({

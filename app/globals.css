@@ -31,3 +31,14 @@ body {
   background: var(--color-bg);
   color: var(--color-text);
 }
+
+@media print {
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
+  body {
+    background: white;
+  }
+}

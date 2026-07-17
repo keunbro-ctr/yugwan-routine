@@ -11,7 +11,7 @@ export default function HomePage() {
           <span className="text-gold">내</span> <span className="text-gold">루</span>틴,{' '}
           <span className="text-gold">내</span>가 <span className="text-gold">짠</span>다
         </h1>
-        <p className="text-text-muted mb-1">주 3·4·5일 홈짐 루틴 빌더</p>
+        <p className="text-text-muted mb-1">주 3·4·5일 1평 홈짐 루틴 빌더</p>
         <p className="text-text-muted mb-10 leading-relaxed">
           프리셋을 불러와 운동을 추가·삭제·조절하고, 주간·세션 볼륨을 실시간으로 확인하세요.
         </p>

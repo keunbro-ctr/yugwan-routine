@@ -9,7 +9,7 @@ export function AppHeader() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 flex h-14 shrink-0 items-center gap-2 border-b border-border bg-bg px-2">
+      <header className="sticky top-0 z-40 flex h-14 shrink-0 items-center gap-2 border-b border-border bg-bg px-2 print:hidden">
         <button
           type="button"
           aria-label="메뉴 열기"
@@ -21,7 +21,7 @@ export function AppHeader() {
           <span className="h-0.5 w-5 bg-text" />
         </button>
         <Link href="/" className="font-headline text-base font-bold text-text">
-          유관 홈짐 루틴 빌더
+          유관 1평 홈짐 루틴 빌더
         </Link>
       </header>
       <NavDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} />
