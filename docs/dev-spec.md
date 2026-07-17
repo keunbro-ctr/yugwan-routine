@@ -225,10 +225,10 @@ export const EXERCISES: Exercise[] = [
     note: '벤치 활용 가슴 고립 운동',
     coefficients: { '가슴': 1 } },
   { id: 'db-guillotine-press', name: '덤벨 길로틴 프레스', pattern: 'horizontal_push', category: '가슴',
-    note: '벤치 활용, 가슴 상부/전체 타겟',
+    note: '벤치 활용, 가슴 전체 타겟',
     coefficients: { '가슴': 1, '전면삼각근': 0.5, '삼두': 0.5 } },
   { id: 'chest-dips', name: '딥스', pattern: 'horizontal_push', category: '가슴',
-    note: '문틀철봉 거치형 딥스 바 또는 치닝디핑 활용. 상체를 앞으로 기울여 가슴 강조',
+    note: '치닝디핑 활용. 없으면 디클라인 덤벨 프레스 또는 클로즈 그립 덤벨 프레스로 대체',
     coefficients: { '가슴': 1, '전면삼각근': 0.5, '삼두': 1 } },
 
   // ── 등 ──
@@ -248,7 +248,7 @@ export const EXERCISES: Exercise[] = [
     note: '고중량 덤벨 로우 변형. 원암 덤벨 로우와 대체관계',
     coefficients: { '광배/등': 1, '중상부/등': 0.5, '후면삼각근': 0.5, '이두': 0.5, '기립근': 0.5 } },
   { id: 'kelso-shrug', name: '켈소 슈러그', pattern: 'shrug', category: '등',
-    note: '등 중상부 (Paul Kelso 고안)',
+    note: '팔 굽힘 없이 등 중상부 타겟 가능',
     coefficients: { '중상부/등': 1 } },
 
   // ── 어깨 ──
@@ -262,7 +262,7 @@ export const EXERCISES: Exercise[] = [
     note: '벤치에 옆으로 누워 수행. 측면삼각근 신장 구간 강조',
     coefficients: { '측면삼각근': 1 } },
   { id: 'prone-db-reverse-fly', name: '라잉 덤벨 리버스 플라이', pattern: 'rear_delt', category: '어깨',
-    note: '벤치에 엎드리거나 인클라인에 기대어 후면삼각근 고립',
+    note: '벤치에 누워 팔을 반대편으로 보낸 채로 수행. 후면삼각근 자극. 신장 구간 강조',
     coefficients: { '후면삼각근': 1 } },
 
   // ── 하체 ──
@@ -276,7 +276,7 @@ export const EXERCISES: Exercise[] = [
     note: '상체를 기울이고 힙힌지를 강조하여 둔근 강조',
     coefficients: { '사두': 0.5, '둔근': 1, '햄스트링': 0.5 } },
   { id: 'sissy-squat', name: '시시 스쿼트', pattern: 'squat', category: '하체',
-    note: '맨몸/덤벨 활용. 레그익스텐션 없이 대퇴직근 타겟',
+    note: '맨몸/덤벨 활용. 레그익스텐션 대체',
     coefficients: { '사두': 1 } },
   { id: 'db-walking-lunge', name: '덤벨 워킹 런지', pattern: 'squat', category: '하체',
     note: '마당·층간소음 무관 시 사용 (기본은 BSS로 대체)',
@@ -299,7 +299,7 @@ export const EXERCISES: Exercise[] = [
     note: '어깨 굴곡 상태에서 수행 → 삼두 장두 신장 극대화',
     coefficients: { '삼두': 1 } },
   { id: 'db-skull-crusher', name: '덤벨 스컬 크러셔', pattern: 'elbow_extension', category: '팔',
-    note: '벤치와 덤벨 활용. 삼두 전체(내측·외측두 위주). 장두 신장은 오버헤드 대비 제한적',
+    note: '벤치와 덤벨 활용. 삼두 전체(장두 신장 극대화)',
     coefficients: { '삼두': 1 } },
   { id: 'db-preacher-curl', name: '덤벨 프리처 컬', pattern: 'elbow_flexion', category: '팔',
     note: '각도조절벤치 등받이에 팔을 걸치고 수행',
