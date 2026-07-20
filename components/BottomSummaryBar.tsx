@@ -1,13 +1,8 @@
 import { useRoutineStore } from '@/store/useRoutineStore';
 
-function ArrowUp({ className, delayMs }: { className?: string; delayMs: number }) {
+function ArrowUp({ className }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      className={`animate-bounce ${className ?? ''}`}
-      style={{ animationDelay: `${delayMs}ms` }}
-      aria-hidden="true"
-    >
+    <svg viewBox="0 0 24 24" className={`animate-bounce ${className ?? ''}`} aria-hidden="true">
       <path d="M12 3 L21 17 L3 17 Z" fill="white" stroke="#FFBE00" strokeWidth={2} strokeLinejoin="round" />
     </svg>
   );
@@ -26,14 +21,10 @@ export function BottomSummaryBar() {
       <button
         type="button"
         onClick={openDashboard}
-        className="animate-glow-pulse flex w-full items-center justify-center gap-2 rounded-t-3xl bg-gold py-3 text-black"
+        className="animate-glow-pulse flex w-full items-center justify-center gap-1.5 rounded-t-2xl bg-gold py-2 text-black"
       >
-        <span className="flex flex-col items-center gap-1" aria-hidden="true">
-          <ArrowUp className="h-6 w-6" delayMs={0} />
-          <ArrowUp className="h-6 w-6" delayMs={120} />
-          <ArrowUp className="h-6 w-6" delayMs={240} />
-        </span>
-        <span className="font-headline text-lg font-bold tracking-wide">대시보드 보기</span>
+        <ArrowUp className="h-4 w-4" />
+        <span className="font-headline text-sm font-bold tracking-wide">대시보드 보기</span>
       </button>
     </div>
   );
