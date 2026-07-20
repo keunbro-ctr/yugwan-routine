@@ -21,10 +21,10 @@ export function BottomSummaryBar() {
       <button
         type="button"
         onClick={openDashboard}
-        className="animate-glow-pulse flex w-full items-center justify-center gap-1.5 rounded-t-2xl bg-gold py-2 text-black"
+        className="animate-glow-pulse flex w-full items-center justify-center gap-2 rounded-t-3xl border-[3px] border-[#C99A18] bg-gold py-3 text-black"
       >
-        <ArrowUp className="h-4 w-4" />
-        <span className="font-headline text-sm font-bold tracking-wide">대시보드 보기</span>
+        <ArrowUp className="h-5 w-5" />
+        <span className="font-headline text-lg font-bold tracking-wide">대시보드 보기</span>
       </button>
     </div>
   );
