@@ -1,19 +1,14 @@
 import { useRoutineStore } from '@/store/useRoutineStore';
 
-function ChevronUp({ className, delayMs }: { className?: string; delayMs: number }) {
+function ArrowUp({ className, delayMs }: { className?: string; delayMs: number }) {
   return (
     <svg
       viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={3}
-      strokeLinecap="round"
-      strokeLinejoin="round"
       className={`animate-bounce ${className ?? ''}`}
       style={{ animationDelay: `${delayMs}ms` }}
       aria-hidden="true"
     >
-      <path d="M6 15l6-6 6 6" />
+      <path d="M12 3 L21 17 L3 17 Z" fill="white" stroke="#FFBE00" strokeWidth={2} strokeLinejoin="round" />
     </svg>
   );
 }
@@ -33,10 +28,10 @@ export function BottomSummaryBar() {
         onClick={openDashboard}
         className="animate-glow-pulse flex w-full items-center justify-center gap-2 rounded-t-3xl bg-gold py-3 text-black"
       >
-        <span className="flex flex-col items-center" aria-hidden="true">
-          <ChevronUp className="h-3.5 w-3.5" delayMs={0} />
-          <ChevronUp className="-mt-2.5 h-3.5 w-3.5" delayMs={120} />
-          <ChevronUp className="-mt-2.5 h-3.5 w-3.5" delayMs={240} />
+        <span className="flex flex-col items-center gap-1" aria-hidden="true">
+          <ArrowUp className="h-6 w-6" delayMs={0} />
+          <ArrowUp className="h-6 w-6" delayMs={120} />
+          <ArrowUp className="h-6 w-6" delayMs={240} />
         </span>
         <span className="font-headline text-lg font-bold tracking-wide">대시보드 보기</span>
       </button>
