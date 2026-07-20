@@ -7,14 +7,14 @@ export default function HomePage() {
   return (
     <main className="flex-1 flex flex-col items-center px-6 py-10 sm:py-16">
       <div className="w-full max-w-2xl">
-        <div className="relative -mx-2 mb-6 aspect-[16/9] overflow-hidden rounded-2xl sm:mx-0">
+        <div className="relative -mx-2 mb-6 aspect-[4/3] overflow-hidden rounded-2xl sm:mx-0">
           <Image
             src="/images/mascot-crouch.png"
             alt=""
             fill
             priority
             sizes="(max-width: 640px) 100vw, 672px"
-            className="object-cover object-[30%_28%]"
+            className="scale-125 object-cover object-[38%_22%]"
           />
           {/* 사진의 순검정 배경(#000)을 페이지 배경(#0D0D0D)으로 자연스럽게 이어붙인다 */}
           <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent" />
