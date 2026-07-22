@@ -28,8 +28,8 @@ export function BottomSummaryBar() {
         <span className="font-headline text-lg font-bold tracking-wide">대시보드 보기</span>
       </button>
       <div
-        className="border-t border-border bg-surface px-4 py-2 text-center text-sm text-text-muted"
-        style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom))' }}
+        className="border-t border-border bg-surface px-4 py-1 text-center text-xs text-text-muted"
+        style={{ paddingBottom: 'calc(0.25rem + env(safe-area-inset-bottom))' }}
       >
         주간 총 {totalSets}세트
       </div>
