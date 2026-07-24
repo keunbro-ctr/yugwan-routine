@@ -1,8 +1,8 @@
 import type { Routine } from './types';
 
-// ① 주 3일 · 풀바디
+// ① 주 3일 · 무분할
 export const FULL3: Routine = {
-  id: 'full3', name: '주 3일 · 풀바디', minutesPerSet: 3,
+  id: 'full3', name: '주 3일 · 무분할', minutesPerSet: 3,
   days: [
     { id: 'A', label: 'Day A', exercises: [
       { exerciseId: 'db-bench-press', sets: 3 },
@@ -104,9 +104,9 @@ export const ULPPL5: Routine = {
   ],
 };
 
-// ④ 주 5일 · 풀바디
+// ④ 주 5일 · 무분할
 export const FULL5: Routine = {
-  id: 'full5', name: '주 5일 · 풀바디', minutesPerSet: 3,
+  id: 'full5', name: '주 5일 · 무분할', minutesPerSet: 3,
   days: [
     { id: 'A', label: 'Day A', exercises: [
       { exerciseId: 'db-bench-press', sets: 3 },

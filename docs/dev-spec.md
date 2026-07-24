@@ -335,9 +335,9 @@ export const EXERCISES: Exercise[] = [
 ## 5. 프리셋 4종 (엑셀 원본 그대로 이식)
 
 ```ts
-// ① 주 3일 · 풀바디
+// ① 주 3일 · 무분할
 export const FULL3: Routine = {
-  id: 'full3', name: '주 3일 · 풀바디', minutesPerSet: 3,
+  id: 'full3', name: '주 3일 · 무분할', minutesPerSet: 3,
   days: [
     { id: 'A', label: 'Day A', exercises: [
       { exerciseId: 'db-bench-press', sets: 3 },
@@ -439,9 +439,9 @@ export const ULPPL5: Routine = {
   ],
 };
 
-// ④ 주 5일 · 풀바디
+// ④ 주 5일 · 무분할
 export const FULL5: Routine = {
-  id: 'full5', name: '주 5일 · 풀바디', minutesPerSet: 3,
+  id: 'full5', name: '주 5일 · 무분할', minutesPerSet: 3,
   days: [
     { id: 'A', label: 'Day A', exercises: [
       { exerciseId: 'db-bench-press', sets: 3 },
@@ -484,7 +484,7 @@ export const FULL5: Routine = {
 export const PRESETS = [FULL3, UL4, ULPPL5, FULL5];
 ```
 
-> 참고: 원본 엑셀 일부 셀에 수식 오류가 있었으나(주3 Day A 풀업의 광배 0, 주4 Day C 덤벨 플라이의 가슴 0, 주5풀바디 Day D 인클라인 프레스의 가슴 0), 위 데이터는 운동DB 계수로 재계산되므로 자동 해결됨.
+> 참고: 원본 엑셀 일부 셀에 수식 오류가 있었으나(주3 Day A 풀업의 광배 0, 주4 Day C 덤벨 플라이의 가슴 0, 주5무분할 Day D 인클라인 프레스의 가슴 0), 위 데이터는 운동DB 계수로 재계산되므로 자동 해결됨.
 
 ---
 

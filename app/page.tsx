@@ -68,7 +68,10 @@ export default function HomePage() {
 
         <p className="mt-12 text-sm text-text-muted">
           이 앱의 배경이 궁금하다면{' '}
-          <a href="#" className="text-gold underline underline-offset-2">
+          <a
+            href="https://www.youtube.com/channel/UCs2rFsRc4HJzT4S7GAlcNKw"
+            className="text-gold underline underline-offset-2"
+          >
             유관 8편 영상
           </a>
           을 참고하세요.
