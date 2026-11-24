@@ -274,7 +274,8 @@ export const DUMBBELLS: Dumbbell[] = [
     lockingSeller: '원판을 끼우고 볼트를 직접 조여 고정. 기어·플라스틱 부품이 없다고 설명',
     reviews: '이탈·고장 경험담 없음. 무게 폭을 크게 바꾸면 나사를 한참 돌려야 한다 (직접). 녹·마감 문제로 환불한 글 1건.',
     storeRecord: '★4.93 · 리뷰 209건',
-    url: 'https://smartstore.naver.com/wit-fit/products/13465113112',
+    url: 'https://naver.me/x0OVqyp7', // 쇼핑커넥트 제휴 링크 → smartstore.naver.com/wit-fit/products/13465113112 (사용자 확인 11-24)
+    affiliate: true,
     sources: [STORE, CAFE],
   },
   {
