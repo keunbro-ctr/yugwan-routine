@@ -174,7 +174,8 @@ export function CompareView({ items, diffOnly, onRemove }: Props) {
 
   return (
     <div className="dbx-cwrap">
-      <table className="dbx-ctable">
+      {/* PC(≥760px): 가로 비교 표 */}
+      <table className="dbx-ctable dbx-c-desktop">
         <caption className="dbx-sr">선택한 덤벨 나란히 비교</caption>
         <thead>
           <tr>
@@ -220,6 +221,57 @@ export function CompareView({ items, diffOnly, onRemove }: Props) {
           ))}
         </tbody>
       </table>
+
+      {/* 모바일(≤759px): 가로 스크롤 없는 세로형 항목별 나란히 비교 */}
+      <div
+        className="dbx-cmobile dbx-c-mobile"
+        style={{ '--cmp-cols': items.length } as React.CSSProperties}
+      >
+        <div className="dbx-cm-head">
+          {items.map((d) => (
+            <div key={d.id} className="dbx-cm-prod">
+              <div className="dbx-cm-prod-top">
+                <span className="dbx-cm-prod-name">
+                  <ProductName d={d} />
+                </span>
+                <button
+                  type="button"
+                  className="dbx-x dbx-cm-x"
+                  onClick={() => onRemove(d.id)}
+                  aria-label={`${d.name} 비교에서 빼기`}
+                >
+                  ✕
+                </button>
+              </div>
+              {d.variant && <span className="dbx-sub">{d.variant}</span>}
+            </div>
+          ))}
+        </div>
+        <div className="dbx-cm-body">
+          {rows.map(({ r, isDiff, ctx }) => (
+            <section
+              key={r.label}
+              className={`dbx-cm-row${isDiff && items.length > 1 ? ' is-diff' : ''}`}
+            >
+              <h3 className="dbx-cm-label">{r.label}</h3>
+              <div className="dbx-cm-vals">
+                {items.map((d) => {
+                  const v = r.num ? r.num(d) : null;
+                  const target = r.bestIs === 'min' ? ctx.min : ctx.max;
+                  const best = items.length > 1 && isDiff && v !== null && target !== null && v === target;
+                  return (
+                    <div key={d.id} className={`dbx-cm-val${best ? ' is-best' : ''}`}>
+                      <div>{r.render ? r.render(d, ctx) : r.text(d)}</div>
+                      {best && r.bestLabel && <span className="dbx-flag">{r.bestLabel}</span>}
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          ))}
+        </div>
+      </div>
+
       {diffOnly && items.length > 1 && rows.length === 0 && (
         <p className="dbx-empty dbx-muted">고른 제품끼리 다른 항목이 없습니다.</p>
       )}

@@ -81,7 +81,7 @@ export function ResultCards({ evaluations, openIds, onToggleOpen, compareIds, on
                 onClick={() => onToggleOpen(d.id)}
                 style={{ display: 'inline-flex', alignItems: 'center', gap: 5, textDecoration: 'none', padding: '2px 0', minHeight: 26 }}
               >
-                {isOpen ? '상세 접기' : '사용감·체결·출처'}
+                {isOpen ? '상세 접기' : '상세 보기'}
                 <span className="dbx-expand" aria-hidden="true" style={{ width: 22, height: 22 }}>
                   <span style={{ display: 'inline-flex', transform: isOpen ? 'rotate(90deg)' : undefined }}>
                     <Chevron />

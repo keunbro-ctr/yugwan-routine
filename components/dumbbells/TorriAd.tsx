@@ -3,10 +3,9 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
-// 14편 광고 · 토리 노르웨이숲 탈취제. 하단 판매 수수료 안내 문구 표시.
-// TODO: 고정댓글에 쓰는 할인 링크를 받으면 url 을 그것으로 바꾼다. 지금은 공식 제품 페이지.
+// 14편 광고 · 토리 노르웨이숲 탈취제 전용 공동구매 링크.
 export const TORRI_AD = {
-  url: 'https://torrihome.kr/deodorizer',
+  url: 'https://tinyurl.com/secretbro',
   eyebrow: 'Norwegian Spruce Forest',
   brand: '토리',
   title: ['노르웨이', '산스장 탈취제'],
