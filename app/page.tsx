@@ -1,7 +1,10 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { PRESETS } from '@/lib/presets';
 import { avgSetsPerSession, estimatedMinutes } from '@/lib/volume';
+
+export const metadata: Metadata = { title: '1평 홈짐 루틴 빌더' };
 
 export default function HomePage() {
   return (
@@ -16,13 +19,13 @@ export default function HomePage() {
             sizes="(max-width: 640px) 100vw, 672px"
             className="scale-125 object-cover object-[38%_22%]"
           />
-          {/* 사진의 순검정 배경(#000)을 페이지 배경(#0D0D0D)으로 자연스럽게 이어붙인다 */}
+          {/* 사진의 순검정 배경(#000)을 페이지 배경(--color-bg)으로 자연스럽게 이어붙인다 */}
           <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-bg/40 via-transparent to-bg/60" />
         </div>
 
         <p className="text-text-muted text-sm font-medium tracking-wide mb-2">유관 · 8편</p>
-        <h1 className="font-headline text-3xl sm:text-4xl font-bold text-text mb-2">
+        <h1 className="font-serif tracking-[-0.03em] text-3xl sm:text-4xl font-bold text-text mb-2">
           <span className="text-gold">내</span> <span className="text-gold">루</span>틴,{' '}
           <span className="text-gold">내</span>가 <span className="text-gold">짠</span>다
         </h1>

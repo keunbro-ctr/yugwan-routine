@@ -1,5 +1,8 @@
+import type { Metadata } from 'next';
 import { EditorShell } from '@/components/EditorShell';
 import { PRESETS } from '@/lib/presets';
+
+export const metadata: Metadata = { title: '루틴 편집' };
 
 interface EditPageProps {
   searchParams: Promise<{ preset?: string }>;

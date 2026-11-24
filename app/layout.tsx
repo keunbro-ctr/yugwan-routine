@@ -20,9 +20,15 @@ const paperlogy = localFont({
   ],
 });
 
+const heirOfLight = localFont({
+  variable: "--font-heir",
+  src: [{ path: "../public/fonts/HeirofLightBold.woff2", weight: "700", style: "normal" }],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "유관 1평 홈짐 루틴 빌더",
-  description: "유튜브 채널 유관 8편(1평 홈짐 루틴 설계) 시청자용 1평 홈짐 루틴 빌더",
+  title: { default: "유관 1평 홈짐", template: "%s · 유관 1평 홈짐" },
+  description: "유튜브 채널 유관의 1평 홈짐 시리즈 도구 모음 · 무게조절 덤벨 비교, 홈짐 루틴 빌더",
 };
 
 export default function RootLayout({
@@ -33,7 +39,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${notoSansKr.variable} ${paperlogy.variable} h-full antialiased`}
+      className={`${notoSansKr.variable} ${paperlogy.variable} ${heirOfLight.variable} h-full antialiased`}
     >
       <head>
         <link
