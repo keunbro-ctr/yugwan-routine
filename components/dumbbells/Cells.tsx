@@ -51,7 +51,7 @@ export function ShippingCell({ d }: { d: Dumbbell }) {
 export function ProductName({ d }: { d: Dumbbell }) {
   if (!d.url) return <>{d.name}</>;
   return (
-    <a className="dbx-namelink" href={d.url} target="_blank" rel="noopener noreferrer" title="판매 페이지 열기 (새 창)">
+    <a className="dbx-namelink" href={d.url} target="_blank" rel={d.affiliate ? 'sponsored noopener' : 'noopener noreferrer'} title="판매 페이지 열기 (새 창)">
       {d.name}
       <svg className="dbx-namelink-ico" width="11" height="11" viewBox="0 0 12 12" aria-hidden="true">
         <path d="M5 2H2v8h8V7M7 2h3v3M10 2L5.5 6.5" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />

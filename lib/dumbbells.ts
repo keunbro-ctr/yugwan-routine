@@ -88,8 +88,10 @@ export interface Dumbbell {
   reviews: string;
   /** 조사 당시 스토어 기록 */
   storeRecord: string;
-  /** 원자료에 있는 판매 페이지 링크만 */
+  /** 원자료에 있는 판매 페이지 링크만. affiliate 이면 네이버 쇼핑커넥트 제휴 링크(naver.me) */
   url: string | null;
+  /** 제휴 링크 여부 — 링크에 rel=sponsored, 하단에 수수료 안내 */
+  affiliate?: boolean;
   sources: string[];
 }
 
@@ -248,23 +250,23 @@ export const DUMBBELLS: Dumbbell[] = [
     sources: [STORE, CAFE, '판매 페이지 사이즈표 「FLEXBELL i 32KG」'],
   },
   {
-    id: 'masterpiece-mark2',
-    name: '마스터피스 MARK2',
+    id: 'masterpiece',
+    name: '마스터피스',
     method: 'screw',
-    maxKg: 36,
-    pairPrice: 530000,
-    priceNote: '낱개 265,000원 × 2',
-    shipping: 16000,
+    maxKg: 32,
+    pairPrice: 484000,
+    priceNote: '낱개 242,000원 × 2 (32kg 옵션 · 판매 페이지 「32kg, 2개」 484,000원). 11-12 비교표의 36kg 낱개 265,000원 상품에서 32kg 판매처로 바꿈',
+    shipping: 30000,
     checked: SURVEY_DATE,
-    length: { kind: 'range', min: 340, max: 365, basis: '36kg 세팅 기준 판매자 표기' },
-    lengthNote: '끼운 판 수만큼 길어진다 (20kg 세팅 260~285mm)',
+    length: { kind: 'range', min: 320, max: 345, basis: '32kg 표기 없음 — 사이즈표(MARK.1) 20·36·56kg 값이 1kg당 5mm씩 늘어나 비례 추정' },
+    lengthNote: '끼운 판 수만큼 길어진다 (사이즈표: 20kg 260~285 · 36kg 340~365 · 56kg 440~470mm). 배송비는 1개마다 붙는다 (2개 30,000원)',
     step: { label: '2kg', min: 2, max: 2 },
     minKg: 4,
     expansion: {
       kind: 'kit',
-      toKg: 64,
+      toKg: 65,
       kitPrice: null,
-      note: '추가 키트로 64kg까지 (추가 구성 시 65~67kg 표기). 키트 가격은 조사표에 없다',
+      note: '판매 페이지 무게 옵션 최대 65kg (65kg 2개 956,000원 · 배송비 개당 31,000원). 키트 가격은 조사표에 없다',
     },
     changeSpeed: '느림 (나사 풀고 판 교체)',
     playNoise: '유격·소리가 거의 없다 (직접, 여러 명)',
@@ -272,7 +274,7 @@ export const DUMBBELLS: Dumbbell[] = [
     lockingSeller: '원판을 끼우고 볼트를 직접 조여 고정. 기어·플라스틱 부품이 없다고 설명',
     reviews: '이탈·고장 경험담 없음. 무게 폭을 크게 바꾸면 나사를 한참 돌려야 한다 (직접). 녹·마감 문제로 환불한 글 1건.',
     storeRecord: '★4.93 · 리뷰 209건',
-    url: 'https://smartstore.naver.com/wit-fit/products/12176175143',
+    url: 'https://smartstore.naver.com/wit-fit/products/13465113112',
     sources: [STORE, CAFE],
   },
   {
@@ -319,7 +321,8 @@ export const DUMBBELLS: Dumbbell[] = [
     lockingSeller: '4중 잠금 (상단 더블락 커넥터 + 센터 스틸바 + 바텀 커넥터 + 오토 세이프 락). 결합부에 나일론·ABS 포함',
     reviews: '멜킨 이전 모델 이탈 사례 (직접 1명 2회 · 전언). 현 롤튼 모델 후기와는 구분해야 한다.',
     storeRecord: '★4.88 · 리뷰 380건',
-    url: 'https://brand.naver.com/melkin/products/6991532917',
+    url: 'https://naver.me/5qLJn0TP', // 쇼핑커넥트 제휴 링크 → brand.naver.com/melkin/products/6991532917
+    affiliate: true,
     sources: [STORE, CAFE, '판매자 Q&A 답변 (2024-07-12)'],
   },
   {
@@ -342,7 +345,8 @@ export const DUMBBELLS: Dumbbell[] = [
     lockingSeller: '4중 잠금 (상단 더블락 커넥터 + 센터 스틸바 + 바텀 커넥터 + 오토 세이프 락). 결합부에 나일론·ABS 포함',
     reviews: '멜킨 이전 모델 이탈 사례 (직접 1명 2회 · 전언). 현 롤튼 모델 후기와는 구분해야 한다.',
     storeRecord: '★4.87 · 리뷰 1,642건',
-    url: 'https://brand.naver.com/melkin/products/6999306828',
+    url: 'https://naver.me/x4ljUqtv', // 쇼핑커넥트 제휴 링크 → brand.naver.com/melkin/products/6999306828
+    affiliate: true,
     sources: [STORE, CAFE, '판매자 Q&A 답변 (2024-07-12)'],
   },
 ];

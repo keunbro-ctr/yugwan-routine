@@ -20,7 +20,7 @@ const SOURCE: [string, string, number, number, string, string][] = [
   ['musclepeak', 'dial', 32.5, 612000, '400mm', '1.5kg'],
   ['nuobell', 'dial', 32, 608000, '435mm', '2kg'],
   ['griptone', 'dial', 32, 538000, '435mm', '1kg'],
-  ['masterpiece-mark2', 'screw', 36, 530000, '340~365mm', '2kg'],
+  ['masterpiece', 'screw', 32, 484000, '320~345mm', '2kg'],
   ['rolton-03', 'dial', 36, 434000, '약 440mm', '2.25kg'],
   ['rolton-04', 'dial', 36, 338000, '약 440mm', '4kg'],
 ];
@@ -61,28 +61,32 @@ describe('비교 데이터 ↔ 원자료', () => {
 
   it('링크는 원자료 상품번호만', () => {
     for (const d of DUMBBELLS) {
-      if (d.url) expect(d.url).toMatch(/^https:\/\/(brand|smartstore)\.naver\.com\/[\w-]+\/products\/\d+$/);
+      if (!d.url) continue;
+      if (d.affiliate) expect(d.url).toMatch(/^https:\/\/naver\.me\/\w+$/);
+      else expect(d.url).toMatch(/^https:\/\/(brand|smartstore)\.naver\.com\/[\w-]+\/products\/\d+$/);
     }
   });
 });
 
 describe('필터', () => {
   it('중량은 기본 구성으로만 — 키트 용량으로 통과시키지 않는다', () => {
-    // 33.4kg 이상: 36kg 기본 구성 3개만. 파워블럭(키트 41kg)·마스터피스(키트 64kg)의 확장 용량은 무시
-    expect(ids(runQuery(q({ minWeight: 33.4 })))).toEqual(['masterpiece-mark2', 'rolton-03', 'rolton-04']);
+    // 33.4kg 이상: 36kg 기본 구성(롤튼 2개)만. 파워블럭(키트 41kg)·마스터피스(32kg, 확장 65kg)의 확장 용량은 무시
+    expect(ids(runQuery(q({ minWeight: 33.4 })))).toEqual(['rolton-03', 'rolton-04']);
     expect(ids(runQuery(q({ minWeight: 37 })))).toEqual([]);
   });
 
   it('길이: 범위가 기준에 걸치면 확인 필요, 미확인은 0으로 보지 않는다', () => {
-    const r = runQuery(q({ maxLength: 360 }));
-    expect(ids(r)).toEqual(['powerblock-exp70']);
-    expect(r.hiddenUnsure.map((e) => e.item.id)).toEqual(['masterpiece-mark2']);
+    // 마스터피스 320~345mm 가 330 기준에 걸친다
+    const r = runQuery(q({ maxLength: 330 }));
+    expect(ids(r)).toEqual([]);
+    expect(r.hiddenUnsure.map((e) => e.item.id)).toEqual(['masterpiece']);
 
-    const withUnsure = runQuery(q({ maxLength: 360, includeUnsure: true }));
-    expect(ids(withUnsure)).toContain('masterpiece-mark2');
+    const withUnsure = runQuery(q({ maxLength: 330, includeUnsure: true }));
+    expect(ids(withUnsure)).toContain('masterpiece');
 
     // 범위 상한까지 포함하면 확정 통과
-    expect(ids(runQuery(q({ maxLength: 365 })))).toEqual(['orbel', 'powerblock-exp70', 'masterpiece-mark2']);
+    expect(ids(runQuery(q({ maxLength: 345 })))).toEqual(['masterpiece']);
+    expect(ids(runQuery(q({ maxLength: 365 })))).toEqual(['orbel', 'powerblock-exp70', 'masterpiece']);
   });
 
   it('근삿값 440은 440 기준에서 통과, 439에서 탈락', () => {
@@ -100,12 +104,12 @@ describe('필터', () => {
 
   it('방식 필터', () => {
     expect(ids(runQuery(q({ methods: ['dial'] })))).toHaveLength(8);
-    expect(ids(runQuery(q({ methods: ['pin', 'screw'] })))).toEqual(['powerblock-exp70', 'masterpiece-mark2']);
+    expect(ids(runQuery(q({ methods: ['pin', 'screw'] })))).toEqual(['powerblock-exp70', 'masterpiece']);
   });
 
   it('확장 키트: 상위 모델 교체는 키트가 아니다', () => {
     const r = runQuery(q({ kitOnly: true }));
-    expect(ids(r)).toEqual(['powerblock-exp70', 'masterpiece-mark2']);
+    expect(ids(r)).toEqual(['powerblock-exp70', 'masterpiece']);
     expect(r.hiddenUnsure.map((e) => e.item.id)).toEqual([]);
   });
 
@@ -131,7 +135,7 @@ describe('정렬', () => {
   });
   it('길이 짧은 순 — 범위는 상한 기준', () => {
     const order = ids(runQuery(q({ sort: 'length-asc' })));
-    expect(order.slice(0, 3)).toEqual(['powerblock-exp70', 'orbel', 'masterpiece-mark2']);
+    expect(order.slice(0, 3)).toEqual(['masterpiece', 'powerblock-exp70', 'orbel']);
     expect(order.at(-1)).toBe('rolton-04');
   });
 });
@@ -154,11 +158,11 @@ describe('비교 선택·URL', () => {
       kitOnly: true,
       includeUnsure: true,
       sort: 'length-asc',
-      compare: ['powerblock-exp70', 'masterpiece-mark2'],
+      compare: ['powerblock-exp70', 'masterpiece'],
       diffOnly: true,
     });
     const qs = serializeQuery(state);
-    expect(qs).toContain('c=powerblock-exp70,masterpiece-mark2');
+    expect(qs).toContain('c=powerblock-exp70,masterpiece');
     expect(parseQuery(new URLSearchParams(qs))).toEqual(state);
     expect(serializeQuery(DEFAULT_QUERY)).toBe('');
   });
