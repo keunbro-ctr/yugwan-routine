@@ -20,7 +20,7 @@ const SOURCE: [string, string, number, number, string, string][] = [
   ['musclepeak', 'dial', 32.5, 612000, '400mm', '1.5kg'],
   ['nuobell', 'dial', 32, 608000, '435mm', '2kg'],
   ['griptone', 'dial', 32, 538000, '435mm', '1kg'],
-  ['masterpiece', 'screw', 32, 484000, '320~345mm', '2kg'],
+  ['masterpiece', 'screw', 32, 484000, '약 345mm', '2kg'],
   ['rolton-03', 'dial', 36, 434000, '약 440mm', '2.25kg'],
   ['rolton-04', 'dial', 36, 338000, '약 440mm', '4kg'],
 ];
@@ -75,17 +75,9 @@ describe('필터', () => {
     expect(ids(runQuery(q({ minWeight: 37 })))).toEqual([]);
   });
 
-  it('길이: 범위가 기준에 걸치면 확인 필요, 미확인은 0으로 보지 않는다', () => {
-    // 마스터피스 320~345mm 가 330 기준에 걸친다
-    const r = runQuery(q({ maxLength: 330 }));
-    expect(ids(r)).toEqual([]);
-    expect(r.hiddenUnsure.map((e) => e.item.id)).toEqual(['masterpiece']);
-
-    const withUnsure = runQuery(q({ maxLength: 330, includeUnsure: true }));
-    expect(ids(withUnsure)).toContain('masterpiece');
-
-    // 범위 상한까지 포함하면 확정 통과
+  it('길이: 마스터피스 근삿값 345는 345 기준에서 통과, 344에서 탈락', () => {
     expect(ids(runQuery(q({ maxLength: 345 })))).toEqual(['masterpiece']);
+    expect(ids(runQuery(q({ maxLength: 344 })))).toEqual([]);
     expect(ids(runQuery(q({ maxLength: 365 })))).toEqual(['orbel', 'powerblock-exp70', 'masterpiece']);
   });
 

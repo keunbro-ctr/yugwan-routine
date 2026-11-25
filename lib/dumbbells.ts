@@ -258,8 +258,8 @@ export const DUMBBELLS: Dumbbell[] = [
     priceNote: '낱개 242,000원 × 2 (32kg 옵션 · 판매 페이지 「32kg, 2개」 484,000원). 11-12 비교표의 36kg 낱개 265,000원 상품에서 32kg 판매처로 바꿈',
     shipping: 30000,
     checked: SURVEY_DATE,
-    length: { kind: 'range', min: 320, max: 345, basis: '32kg 표기 없음 — 사이즈표(MARK.1) 20·36·56kg 값이 1kg당 5mm씩 늘어나 비례 추정' },
-    lengthNote: '끼운 판 수만큼 길어진다 (사이즈표: 20kg 260~285 · 36kg 340~365 · 56kg 440~470mm). 배송비는 1개마다 붙는다 (2개 30,000원)',
+    length: { kind: 'approx', value: 345, basis: '32kg 표기 없음 — 사이즈표(MARK.1·MARK.2 같음) 20·36·56kg 전체 길이 285·365·470mm가 1kg당 5mm씩 늘어나 계산. 끝 나사 포함 전체 길이' },
+    lengthNote: '끼운 판 수만큼 길어진다. 사이즈표 전체 길이(끝 나사 포함): 20kg 285 · 36kg 365 · 56kg 470mm, 플레이트 바깥면 기준은 25~30mm 짧다 (32kg 약 320mm). 배송비는 1개마다 붙는다 (2개 30,000원)',
     step: { label: '2kg', min: 2, max: 2 },
     minKg: 4,
     expansion: {
