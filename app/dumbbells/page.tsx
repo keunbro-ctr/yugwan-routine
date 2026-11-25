@@ -15,9 +15,9 @@ export const metadata: Metadata = {
     siteName: '유관 1평 홈짐',
     locale: 'ko_KR',
     type: 'website',
-    images: [{ url: '/og/dumbbells.jpg', width: 1200, height: 630, alt: '무게조절 덤벨 비교 · 유관 1평 홈짐' }],
+    images: [{ url: '/og/dumbbells-v2.jpg', width: 1200, height: 630, alt: '무게조절 덤벨 비교 · 유관 1평 홈짐' }],
   },
-  twitter: { card: 'summary_large_image', images: ['/og/dumbbells.jpg'] },
+  twitter: { card: 'summary_large_image', images: ['/og/dumbbells-v2.jpg'] },
 };
 
 interface DumbbellsPageProps {
