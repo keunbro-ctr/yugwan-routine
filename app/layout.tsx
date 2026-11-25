@@ -27,6 +27,7 @@ const heirOfLight = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://yugwan-routine.vercel.app"),
   title: { default: "유관 1평 홈짐", template: "%s · 유관 1평 홈짐" },
   description: "유튜브 채널 유관의 1평 홈짐 시리즈 도구 모음 · 무게조절 덤벨 비교, 홈짐 루틴 빌더",
 };
