@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import { contentByHref } from '@/lib/contents';
 import { DUMBBELLS, MAX_COMPARE, SURVEY_DATE_LABEL, getDumbbell } from '@/lib/dumbbells';
 import {
   DEFAULT_QUERY,
@@ -25,6 +26,8 @@ interface Props {
   initial: QueryState;
 }
 
+
+const VIDEO_URL = contentByHref('/dumbbells').videoUrl;
 export function DumbbellCompare({ initial }: Props) {
   const [q, setQ] = useState<QueryState>(initial);
   const [open, setOpen] = useState<string[]>([]);
@@ -71,7 +74,12 @@ export function DumbbellCompare({ initial }: Props) {
     <>
       <div className="dbx-wrap">
         <header className="dbx-hero">
-          <p className="dbx-eyebrow">유관 · 14편 · 무게조절 덤벨 {DUMBBELLS.length}종</p>
+          <p className="dbx-eyebrow">
+            유관 · 14편 · 무게조절 덤벨 {DUMBBELLS.length}종 ·{' '}
+            <a className="dbx-video-link" href={VIDEO_URL} target="_blank" rel="noopener noreferrer">
+              ▶ 영상 보기
+            </a>
+          </p>
           <h1 className="dbx-title">내 홈짐에 맞는 덤벨 찾기</h1>
           <p className="dbx-lead">필요한 무게부터 정하고, 돈을 더 쓸 조건을 골라보세요.</p>
           <p className="dbx-basis">한 쌍 가격 · 배송비 별도 · {SURVEY_DATE_LABEL} 조사</p>
@@ -241,6 +249,12 @@ export function DumbbellCompare({ initial }: Props) {
         </section>
 
         <footer className="dbx-foot">
+          <p className="dbx-foot-video">
+            이 비교표는 유관 14편 영상과 함께 만들었어요.{' '}
+            <a className="dbx-video-link" href={VIDEO_URL} target="_blank" rel="noopener noreferrer">
+              ▶ 영상 보기
+            </a>
+          </p>
           <ul>
             <li>한 쌍 가격은 {SURVEY_DATE_LABEL} 조사 당시 낱개 판매가(쿠폰 적용 전 상품 가격) × 2입니다. 파워블럭은 한 쌍 세트 가격이며 별매 거치대는 빠져 있습니다. 배송비는 따로 적었고, 한 쌍을 한 번에 주문하면 한 번 붙는 것으로 봤습니다.</li>
             <li>제품 이름을 누르면 판매 페이지(네이버 스마트스토어)가 새 창으로 열립니다.</li>

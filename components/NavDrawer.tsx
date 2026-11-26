@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import type React from 'react';
 import { usePathname } from 'next/navigation';
 import { CONTENTS, SITE_NAME } from '@/lib/contents';
 
@@ -39,23 +40,38 @@ export function NavDrawer({ open, onClose }: NavDrawerProps) {
           {CONTENTS.map((c) => {
             const active = c.match(pathname);
             return (
-              <Link
+              <div
                 key={c.href}
-                href={c.href}
-                onClick={onClose}
-                aria-current={active ? 'page' : undefined}
-                className={`flex items-center gap-2 rounded-lg px-3 py-3 text-sm font-medium text-text ${
+                className={`flex items-center rounded-lg ${
                   active ? 'bg-surface-raised' : 'hover:bg-surface-raised/60'
                 }`}
               >
-                <span
-                  className="h-1.5 w-1.5 shrink-0 rounded-full"
-                  style={{ background: active ? c.accent : 'transparent' }}
-                  aria-hidden="true"
-                />
-                <span className="flex-1">{c.label}</span>
-                <span className="text-xs tabular-nums text-text-dim">{c.episode}</span>
-              </Link>
+                <Link
+                  href={c.href}
+                  onClick={onClose}
+                  aria-current={active ? 'page' : undefined}
+                  className="flex min-w-0 flex-1 items-center gap-2 py-3 pl-3 pr-1 text-sm font-medium text-text"
+                >
+                  <span
+                    className="h-1.5 w-1.5 shrink-0 rounded-full"
+                    style={{ background: active ? c.accent : 'transparent' }}
+                    aria-hidden="true"
+                  />
+                  <span className="flex-1">{c.label}</span>
+                  <span className="text-xs tabular-nums text-text-dim">{c.episode}</span>
+                </Link>
+                <a
+                  href={c.videoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${c.episode} 영상 유튜브에서 보기`}
+                  title={`${c.episode} 영상 보기`}
+                  className="mr-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-md text-[11px] text-text-dim transition-colors hover:text-[var(--acc)]"
+                  style={{ '--acc': c.accent } as React.CSSProperties}
+                >
+                  ▶
+                </a>
+              </div>
             );
           })}
           {COMING_SOON_ITEMS.map((label) => (

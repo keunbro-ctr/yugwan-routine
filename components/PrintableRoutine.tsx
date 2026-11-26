@@ -3,7 +3,9 @@ import { PRIMARY_MUSCLES } from '@/lib/types';
 import { estimatedMinutes, sessionTotalSets, weeklyVolume } from '@/lib/volume';
 import { useRoutineStore } from '@/store/useRoutineStore';
 
-const YOUTUBE_CHANNEL_URL = 'https://www.youtube.com/channel/UCs2rFsRc4HJzT4S7GAlcNKw';
+import { YOUTUBE_CHANNEL_URL, contentByHref } from '@/lib/contents';
+
+const VIDEO_URL = contentByHref('/').videoUrl;
 
 // 인쇄 전용 뷰. 평소엔 화면에서 완전히 숨겨져 있다가(hidden), 인쇄 시에만
 // (print:block) 나타난다. 다크 테마 변수를 쓰지 않고 화이트/블랙을 고정해
@@ -63,6 +65,8 @@ export function PrintableRoutine() {
       </div>
 
       <p className="mt-4 text-[8pt] text-gray-500">
+        루틴 설명 영상(유관 8편) <a href={VIDEO_URL}>{VIDEO_URL.replace('https://', '')}</a>
+        {' · '}
         <a href={YOUTUBE_CHANNEL_URL}>유관 유튜브 채널</a>
       </p>
     </div>

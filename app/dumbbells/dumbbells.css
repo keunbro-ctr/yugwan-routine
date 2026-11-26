@@ -1216,6 +1216,22 @@
   font-size: 12.5px;
   color: var(--d-dim);
 }
+.dbx-foot-video {
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: var(--d-dim);
+}
+/* 유튜브 영상으로 돌아가는 링크. 샴페인 화면이라 앰버를 쓰지 않는다 */
+.dbx-video-link {
+  color: var(--champ-mid);
+  font-weight: 600;
+  white-space: nowrap;
+  text-underline-offset: 2px;
+}
+.dbx-video-link:hover {
+  color: var(--champ-solid);
+  text-decoration: underline;
+}
 .dbx-foot ul {
   display: grid;
   gap: 4px;

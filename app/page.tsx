@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { contentByHref } from '@/lib/contents';
 import { PRESETS } from '@/lib/presets';
 import { avgSetsPerSession, estimatedMinutes } from '@/lib/volume';
 
 export const metadata: Metadata = { title: '1평 홈짐 루틴 빌더' };
 
 export default function HomePage() {
+  const { videoUrl } = contentByHref('/');
   return (
     <main className="flex-1 flex flex-col items-center px-6 py-10 sm:py-16">
       <div className="w-full max-w-2xl">
@@ -24,7 +26,17 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-r from-bg/40 via-transparent to-bg/60" />
         </div>
 
-        <p className="text-text-muted text-sm font-medium tracking-wide mb-2">유관 · 8편</p>
+        <p className="text-text-muted text-sm font-medium tracking-wide mb-2">
+          유관 · 8편 ·{' '}
+          <a
+            href={videoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gold underline-offset-2 hover:underline"
+          >
+            ▶ 영상 보기
+          </a>
+        </p>
         <h1 className="font-serif tracking-[-0.03em] text-3xl sm:text-4xl font-bold text-text mb-2">
           <span className="text-gold">내</span> <span className="text-gold">루</span>틴,{' '}
           <span className="text-gold">내</span>가 <span className="text-gold">짠</span>다
@@ -72,7 +84,9 @@ export default function HomePage() {
         <p className="mt-12 text-sm text-text-muted">
           이 앱의 배경이 궁금하다면{' '}
           <a
-            href="https://www.youtube.com/channel/UCs2rFsRc4HJzT4S7GAlcNKw"
+            href={videoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-gold underline underline-offset-2"
           >
             유관 8편 영상
